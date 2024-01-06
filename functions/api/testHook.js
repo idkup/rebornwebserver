@@ -11,8 +11,13 @@ export async function onRequestPost(ctx){
 	} catch (e) {
 		return new Response('Invalid request', { status: 400, headers: corsHeaders});
 	}
+	const auth = await ctx.env.discord.get("AUTH_KEY");
+	if (obj.auth !=  auth) {
+		return new Response('Invalid auth key', { status: 400, headers: corsHeaders});
+	}
 	const url = await ctx.env.discord.get("WEBHOOK_URL");
-	for (const key in obj) {
+	const fields = obj.fields
+	for (const key in fields) {
 		let msg = {};
 		msg.content = obj[key];
 		const response = await fetch(url, {
