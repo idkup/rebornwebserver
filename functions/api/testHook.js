@@ -7,14 +7,14 @@ export async function onRequestPost(ctx){
 	};
 	let msg = {};
 	msg.content = 'test test test test';
-	console.log('1');
+	console.log("asdfasdf");
 	
 	const response = await fetch(ctx.env.DISCORD_WEBHOOK_URL, {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json; charset=utf-8' },
 		body: JSON.stringify(msg)
 	});
-	console.log('2');
+	console.log("fdsafdsa");
 	if (response.status === 200 || response.status === 204) {
 		return new Response('Success', { status: 200, headers: corsHeaders });
 	} else {
