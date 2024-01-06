@@ -1,5 +1,5 @@
 // JavaScript source code
-export async function onRequest(ctx){
+export async function onRequestPost(ctx){
 	const corsHeaders = {
 		'Access-Control-Allow-Origin': '*',
 		'Access-Control-Allow-Methods': '*',
@@ -14,10 +14,10 @@ export async function onRequest(ctx){
 	if (!obj.form) {
 		return new Response('Invalid JSON', { status: 400, headers: corsHeaders});
 	}
-	Object.entries(obj.form).forEach((entry)) => {
+	Object.entries(obj.form).forEach((entry) => {
 		const [key, value] = entry;
 		let msg = {};
-		msg.content = 'test test test test';
+		msg.content = value;
 		const url = await ctx.env.discord.get("WEBHOOK_URL");
 		const response = await fetch(url, {
 			method: 'POST',
@@ -29,5 +29,5 @@ export async function onRequest(ctx){
 		} else {
 			return new Response('Errored', { status: 500, headers: corsHeaders });
 		}
-	}
+	});
 }
