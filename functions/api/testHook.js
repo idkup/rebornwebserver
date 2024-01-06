@@ -1,5 +1,5 @@
 // JavaScript source code
-export async function onRequestPost(ctx){
+export async function onRequest(ctx){
 	const corsHeaders = {
 		'Access-Control-Allow-Origin': '*',
 		'Access-Control-Allow-Methods': '*',
