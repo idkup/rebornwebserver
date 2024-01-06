@@ -15,6 +15,7 @@ export async function onRequestPost(ctx){
 	const url = await ctx.env.discord.get("WEBHOOK_URL");
 	for (const key in obj) {
 		let msg = obj[key];
+		console.log(msg);
 		const response = await fetch(url, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json; charset=utf-8' },
