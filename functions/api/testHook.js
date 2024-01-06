@@ -6,7 +6,7 @@ export async function onRequestPost(ctx){
 		'Access-Control-Allow-Headers': '*',
 	};
 	let msg = {};
-	msg.content = 'hahaxd';
+	msg.content = 'test test test test';
 	
 	const response = await fetch(ctx.env.DISCORD_WEBHOOK_URL, {
 		method: 'POST',
