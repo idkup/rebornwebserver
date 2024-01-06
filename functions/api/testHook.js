@@ -19,7 +19,7 @@ export async function onRequestPost(ctx){
 	const fields = obj.fields
 	for (const key in fields) {
 		let msg = {};
-		msg.content = obj[key];
+		msg.content = fields[key];
 		const response = await fetch(url, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json; charset=utf-8' },
