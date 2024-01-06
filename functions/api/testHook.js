@@ -11,6 +11,7 @@ export async function onRequestPost(ctx){
 	} catch (e) {
 		return new Response('Invalid request', { status: 400, headers: corsHeaders});
 	}
+	console.log(obj);
 	if (!obj.form) {
 		return new Response('Invalid JSON', { status: 400, headers: corsHeaders});
 	}
