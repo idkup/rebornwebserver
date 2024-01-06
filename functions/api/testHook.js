@@ -15,10 +15,9 @@ export async function onRequestPost(ctx){
 		return new Response('Invalid JSON', { status: 400, headers: corsHeaders});
 	}
 	const url = await ctx.env.discord.get("WEBHOOK_URL");
-	Object.entries(obj.form).forEach((async entry) => {
-		const [key, value] = entry;
+	for (const key in obj.form) {
 		let msg = {};
-		msg.content = value;
+		msg.content = obj.form[key];
 		const response = await fetch(url, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json; charset=utf-8' },
@@ -29,5 +28,5 @@ export async function onRequestPost(ctx){
 		} else {
 			return new Response('Errored', { status: 500, headers: corsHeaders });
 		}
-	});
+	}
 }
