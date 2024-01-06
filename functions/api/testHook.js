@@ -9,7 +9,7 @@ export async function onRequest(ctx){
 	msg.content = 'test test test test';
 	console.log("asdfasdf");
 	
-	const response = await fetch(ctx.env.DISCORD_WEBHOOK_URL, {
+	const response = await fetch(ctx.env.discord.get("WEBHOOK_URL"), {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json; charset=utf-8' },
 		body: JSON.stringify(msg)
