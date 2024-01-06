@@ -8,7 +8,8 @@ export async function onRequest(ctx){
 	let msg = {};
 	msg.content = 'test test test test';
 	console.log("asdfasdf");
-	const url = await fetch(ctx.env.discord.get("WEBHOOK_URL");
+	const url_promise = await fetch(ctx.env.discord.get("WEBHOOK_URL");
+	const url = await url_promise.text;
 	const response = url, {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json; charset=utf-8' },
