@@ -5,7 +5,7 @@ export async function onRequestGet(ctx) {
 		'Access-Control-Allow-Headers': '*',
 	};
 	try {
-		let results = await ctx.env.db.prepare("SELECT * FROM mons").all();
+		let results = await ctx.env.db.prepare("SELECT * FROM mons").run();
 		return new Response("asdf", { status: 200, headers: corsHeaders, json: results } );
 	} catch (e) {
 		return new Response(`${e}`, {status: 500, headers: corsHeaders } );
