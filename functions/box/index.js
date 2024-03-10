@@ -6,10 +6,8 @@ export async function onRequestGet(ctx) {
 	};
 	try {
 		let results = await ctx.env.db.prepare("SELECT * FROM mons").all();
-		let response = new Response("asdf", 200);
-		response.json = ctx.json(results);
-		return response;
+		return new Response("asdf", { status: 200, headers: corsHeaders, json: ctx.json(results) } );
 	} catch (e) {
-		return new Response(`${e}`, 500);
+		return new Response(`${e}`, {status: 500, headers: corsHeaders } );
 	}
 }
